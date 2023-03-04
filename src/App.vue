@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <v-toolbar
+      app
+      dark
+      prominent
+      image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+    >
+    
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <Header></Header>
+      <v-toolbar-title class="warning">Vuetify</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+    
+      <v-btn icon>
+        <v-icon>mdi-export</v-icon>
+      </v-btn>
+    </v-toolbar>
+
+    <v-navigation-drawer app v-model="drawer">
+      <h3>Menu vertical</h3>
+      <header-ru></header-ru>
+    </v-navigation-drawer>
+
+
+
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderRu from "./components/HeaderRu.vue"
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: { HeaderRu },
+  name:"App",
+    data(){
+      return {
+        drawer:null,
+      }
+    }
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
